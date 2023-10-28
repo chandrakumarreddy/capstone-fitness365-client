@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { List, Space, Spin } from "antd";
 import Header from "components/Header";
 import { Link, useParams } from "react-router-dom";
@@ -9,9 +9,9 @@ import {
 } from "@ant-design/icons";
 import React from "react";
 
-const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
+const IconText = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
   <Space>
-    {React.createElement(icon)}
+    {icon}
     {text}
   </Space>
 );
@@ -19,20 +19,36 @@ const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
 export default function FitnessTip() {
   const params = useParams();
   const id = params.id;
-  const { data, isLoading } = useQuery<{ result: any }>({
+
+  const { data, isLoading, refetch } = useQuery<{ result: any }>({
     queryKey: ["fitness-tips"],
     queryFn: async () => {
+      const response = await fetch(`http://localhost:3000/api/fitness/${id}`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      return response.json() as any;
+    },
+  });
+  const likeMutation = useMutation({
+    mutationFn: async ({ tipId, liked }: any) => {
       const response = await fetch(
-        `https://capstone-fitness.up.railway.app/api/fitness/${id}`,
+        `http://localhost:3000/api/fitness/${id}/tips/${tipId}/like`,
         {
-          method: "GET",
+          method: "POST",
           headers: {
             "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("token")}`,
           },
+          body: JSON.stringify({ liked: liked }),
         }
       );
-      return response.json() as any;
+      return response.json();
+    },
+    onSuccess: () => {
+      refetch();
     },
   });
   return (
@@ -59,7 +75,7 @@ export default function FitnessTip() {
             />
             <List
               className="demo-loadmore-list"
-              loading={isLoading}
+              loading={isLoading || likeMutation.isPending}
               itemLayout="vertical"
               dataSource={data?.result?.tips ?? []}
               renderItem={(item: any) => (
@@ -75,12 +91,30 @@ export default function FitnessTip() {
                       New Comment
                     </button>,
                     <IconText
-                      icon={LikeTwoTone}
+                      icon={
+                        <LikeTwoTone
+                          onClick={() =>
+                            likeMutation.mutate({
+                              liked: true,
+                              tipId: item._id,
+                            })
+                          }
+                        />
+                      }
                       text={item.likes}
                       key="list-vertical-like"
                     />,
                     <IconText
-                      icon={DislikeTwoTone}
+                      icon={
+                        <DislikeTwoTone
+                          onClick={() =>
+                            likeMutation.mutate({
+                              liked: false,
+                              tipId: item._id,
+                            })
+                          }
+                        />
+                      }
                       text={item.dislikes}
                       key="list-vertical-dislike"
                     />,

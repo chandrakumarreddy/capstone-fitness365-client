@@ -4,13 +4,14 @@ import { Button, Form, Input, Modal } from "antd";
 import { useGetFitnessTips } from "hooks/fitness";
 import { useState } from "react";
 
-export default function Create() {
+export default function Create({ contentType }: { contentType: string }) {
+  const isVideos = contentType === "videos";
   const [open, setOpen] = useState(false);
-  const { refetch } = useGetFitnessTips();
+  const { refetch } = useGetFitnessTips(contentType);
   const mutation = useMutation({
     mutationFn: async (formData) => {
       const response = await fetch(
-        `https://capstone-fitness.up.railway.app/api/fitness/`,
+        `http://localhost:3000/api/fitness/?type=${contentType}`,
         {
           method: "POST",
           headers: {
@@ -26,7 +27,7 @@ export default function Create() {
       refetch();
       setOpen(false);
       Modal.success({
-        content: "Successfully added new Tip",
+        content: "Successfully added.",
         centered: true,
         okButtonProps: {
           className: "bg-blue-500",
@@ -44,7 +45,7 @@ export default function Create() {
         className="bg-blue-500 !h-10 w-fit"
         onClick={() => setOpen(true)}
       >
-        Add Fitness Type
+        {isVideos ? "Add Fitness Video" : "Add Fitness Type"}
       </Button>
       <Modal
         key={+open}
@@ -63,6 +64,11 @@ export default function Create() {
           <Form.Item name="title" label="Name" rules={[{ required: true }]}>
             <Input className="h-10 rounded-md" placeholder="Add new category" />
           </Form.Item>
+          {isVideos && (
+            <Form.Item name="link" label="Link" rules={[{ required: true }]}>
+              <Input className="h-10 rounded-md" placeholder="Add Link" />
+            </Form.Item>
+          )}
           <Form.Item className="flex justify-end mb-0">
             <Button
               type="primary"

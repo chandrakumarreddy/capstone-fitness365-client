@@ -5,7 +5,7 @@ export const useGetFitnessTips = (contentType: string = "text") => {
     queryKey: ["fitness-tips", contentType],
     queryFn: async () => {
       const response = await fetch(
-        `https://capstone-fitness.up.railway.app/api/fitness?type=${contentType}`,
+        `http://localhost:3000/api/fitness?type=${contentType}`,
         {
           method: "GET",
           headers: {

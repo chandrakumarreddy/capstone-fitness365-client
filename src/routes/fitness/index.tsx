@@ -39,7 +39,7 @@ export default function Fitness() {
           <h3 className="text-3xl font-bold">Best Fitness tips</h3>
           {isLoggedIn && (
             <div className="flex flex-col items-end gap-y-4">
-              <Create />
+              <Create contentType={contentType} />
               <Select
                 size="large"
                 placeholder="Select type"
@@ -113,7 +113,7 @@ export default function Fitness() {
                 ))}
               </section>
             ) : (
-              <div className="grid gap-5 grid-cols-2">
+              <div className="grid gap-10 grid-cols-2">
                 {data?.results.map((item) => (
                   <div key={item._id}>
                     <div className="rounded-lg overflow-hidden">
@@ -149,7 +149,7 @@ const NewTipForm = () => {
   const mutation = useMutation({
     mutationFn: async (formData) => {
       const response = await fetch(
-        `https://capstone-fitness.up.railway.app/api/fitness/${newTipForm}/tips`,
+        `http://localhost:3000/api/fitness/${newTipForm}/tips`,
         {
           method: "POST",
           headers: {
