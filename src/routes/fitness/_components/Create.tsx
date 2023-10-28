@@ -9,14 +9,17 @@ export default function Create() {
   const { refetch } = useGetFitnessTips();
   const mutation = useMutation({
     mutationFn: async (formData) => {
-      const response = await fetch(`http://localhost:3000/api/fitness/`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://capstone-fitness.up.railway.app/api/fitness/`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       return response.json();
     },
     onSuccess: () => {

@@ -149,7 +149,7 @@ const NewTipForm = () => {
   const mutation = useMutation({
     mutationFn: async (formData) => {
       const response = await fetch(
-        `http://localhost:3000/api/fitness/${newTipForm}/tips`,
+        `https://capstone-fitness.up.railway.app/api/fitness/${newTipForm}/tips`,
         {
           method: "POST",
           headers: {

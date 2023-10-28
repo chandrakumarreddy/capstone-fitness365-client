@@ -16,13 +16,16 @@ function SignInForm() {
   const [error, setError] = useState("");
   const mutation = useMutation({
     mutationFn: async (formData) => {
-      const response = await fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://capstone-fitness.up.railway.app/api/login",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       return response.json();
     },
     onSuccess: () => {
