@@ -11,7 +11,7 @@ export default function Create({ contentType }: { contentType: string }) {
   const mutation = useMutation({
     mutationFn: async (formData) => {
       const response = await fetch(
-        `http://localhost:3000/api/fitness/?type=${contentType}`,
+        `https://capstone-fitness.up.railway.app/api/fitness/?type=${contentType}`,
         {
           method: "POST",
           headers: {
