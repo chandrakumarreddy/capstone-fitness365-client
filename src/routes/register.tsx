@@ -46,7 +46,7 @@ function RegisterForm() {
             content: "SuccessFully Logged In",
             centered: true,
             onOk: () => {
-              window.location.replace("/dashboard/profile");
+              window.location.replace("/");
             },
             okButtonProps: {
               className: "bg-blue-500",
@@ -112,7 +112,7 @@ function Login() {
   });
   useEffect(() => {
     if (data) {
-      navigate("/dashboard/profile");
+      navigate("/", { replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
