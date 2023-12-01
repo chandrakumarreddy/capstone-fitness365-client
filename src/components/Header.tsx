@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Modal } from "antd";
-import { Link, useLocation } from "react-router-dom";
+import { Dropdown, MenuProps, Modal } from "antd";
+import { useMemo } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 type HeaderType = {
   headerStyle?: string;
@@ -8,11 +9,72 @@ type HeaderType = {
 
 export default function Header({ headerStyle = "" }: HeaderType) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { data } = useQuery({
     queryKey: ["isLoggedIn"],
     queryFn: () => localStorage.getItem("isLoggedIn"),
   });
+  const fitnessItems: MenuProps["items"] = useMemo(
+    () => [
+      {
+        label: "Exercises",
+        key: "1",
+        onClick: () => navigate("/fitness/exercises/aerobic"),
+      },
+      {
+        label: "Fintess Tips",
+        key: "2",
+        onClick: () => navigate("/fitness/tips"),
+      },
+      {
+        label: "Blog",
+        key: "2",
+        onClick: () => navigate("/fitness/blog"),
+      },
+    ],
+    []
+  );
+  const yogaItems: MenuProps["items"] = useMemo(
+    () => [
+      {
+        label: "Yoga Poses",
+        key: "1",
+        onClick: () => navigate("/yoga/poses"),
+      },
+      {
+        label: "Articles and Blog",
+        key: "2",
+        onClick: () => navigate("/yoga/blog"),
+      },
+    ],
+    []
+  );
+  const nutritionItems: MenuProps["items"] = useMemo(
+    () => [
+      {
+        label: "Articles and Blogs",
+        key: "1",
+        onClick: () => navigate("/nutrition/blog"),
+      },
+      {
+        label: "Nutrition Plans",
+        key: "2",
+        onClick: () => navigate("/nutrition/plans"),
+      },
+      {
+        label: "Recipes",
+        key: "3",
+        onClick: () => navigate("/nutrition/recipes"),
+      },
+      {
+        label: "Calorie and Macronutrient Calculator",
+        key: "4",
+        onClick: () => navigate("/nutrition/calculator"),
+      },
+    ],
+    []
+  );
   const onClickLogout = () => {
     Modal.warning({
       maskClosable: false,
@@ -42,7 +104,11 @@ export default function Header({ headerStyle = "" }: HeaderType) {
               <img src="/logo-white.png" alt="logo" width="84" height="56" />
             </li>
           </Link>
-          <Link to="/fitness">
+          <Dropdown
+            menu={{ items: fitnessItems }}
+            className="cursor-pointer"
+            arrow
+          >
             <li
               className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
                 pathname.includes("fitness") ? "text-orange-500" : ""
@@ -50,8 +116,12 @@ export default function Header({ headerStyle = "" }: HeaderType) {
             >
               FITNESS
             </li>
-          </Link>
-          <Link to="/nutrition">
+          </Dropdown>
+          <Dropdown
+            menu={{ items: nutritionItems }}
+            className="cursor-pointer"
+            arrow
+          >
             <li
               className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
                 pathname.includes("nutrition") ? "text-orange-500" : ""
@@ -59,9 +129,21 @@ export default function Header({ headerStyle = "" }: HeaderType) {
             >
               NUTRITION
             </li>
-          </Link>
+          </Dropdown>
           <li className="hover:text-orange-500">SPORTS</li>
-          <li className="hover:text-orange-500">YOGA</li>
+          <Dropdown
+            menu={{ items: yogaItems }}
+            className="cursor-pointer"
+            arrow
+          >
+            <li
+              className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
+                pathname.includes("yoga") ? "text-orange-500" : ""
+              }`}
+            >
+              YOGA
+            </li>
+          </Dropdown>
           <li className="hover:text-orange-500">CARE</li>
         </ul>
 

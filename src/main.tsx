@@ -12,6 +12,13 @@ import ErrorPage from "./routes/error";
 import Dashboard from "./routes/dashboard";
 import Profile from "./routes/profile";
 import Bookmarks from "./routes/bookmarks";
+import Streaks from "./routes/streaks";
+import FitnessTips from "./routes/fitness/tips";
+import FitnessBlog from "./routes/fitness/blog";
+import FitnessExercises from "./routes/fitness/exercises";
+import AerobicExercises from "./routes/fitness/exercises/exerciseType";
+import Yoga from "./routes/yoga";
+import YogaPoses from "./routes/yoga/exercises";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +38,10 @@ const router = createBrowserRouter([
         path: "bookmarks",
         element: <Bookmarks />,
       },
+      {
+        path: "streaks",
+        element: <Streaks />,
+      },
     ],
   },
   {
@@ -44,6 +55,44 @@ const router = createBrowserRouter([
   {
     path: "fitness",
     element: <FitnessPage />,
+    children: [
+      {
+        path: "exercises",
+        element: <FitnessExercises />,
+        children: [
+          {
+            path: ":exerciseType",
+            element: <AerobicExercises />,
+          },
+        ],
+      },
+      {
+        path: "tips",
+        element: <FitnessTips />,
+      },
+      {
+        path: "blog",
+        element: <FitnessBlog />,
+      },
+    ],
+  },
+  {
+    path: "yoga",
+    element: <Yoga />,
+    children: [
+      {
+        path: "poses",
+        element: <YogaPoses />,
+      },
+      {
+        path: "tips",
+        element: <FitnessTips />,
+      },
+      {
+        path: "blog",
+        element: <FitnessBlog />,
+      },
+    ],
   },
   {
     path: "fitness/:id",

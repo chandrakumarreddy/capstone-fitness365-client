@@ -21,7 +21,7 @@ export default function FitnessTip() {
   const id = params.id;
 
   const { data, isLoading, refetch } = useQuery<{ result: any }>({
-    queryKey: ["fitness-tips"],
+    queryKey: ["fitness-tips", id],
     queryFn: async () => {
       const response = await fetch(
         `https://capstone-fitness.up.railway.app/api/fitness/${id}`,
@@ -80,6 +80,7 @@ export default function FitnessTip() {
               className="demo-loadmore-list"
               loading={isLoading || likeMutation.isPending}
               itemLayout="vertical"
+              size="large"
               dataSource={data?.result?.tips ?? []}
               renderItem={(item: any) => (
                 <List.Item
