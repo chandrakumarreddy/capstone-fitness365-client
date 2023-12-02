@@ -19,12 +19,21 @@ import FitnessExercises from "./routes/fitness/exercises";
 import AerobicExercises from "./routes/fitness/exercises/exerciseType";
 import Yoga from "./routes/yoga";
 import YogaPoses from "./routes/yoga/exercises";
+import FitnessCoach from "./routes/coach";
+import NutritionBlog from "./routes/nutrition/blog";
+import NutritionCalculator from "./routes/nutrition/calculator";
+import NutritionPlans from "./routes/nutrition/plans";
+import NutritionRecipes from "./routes/nutrition/recipes";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/apply-coach",
+    element: <FitnessCoach />,
   },
   {
     path: "dashboard",
@@ -97,6 +106,22 @@ const router = createBrowserRouter([
   {
     path: "fitness/:id",
     element: <FitnessPostPage />,
+  },
+  {
+    path: "nutrition/blog",
+    element: <NutritionBlog />,
+  },
+  {
+    path: "nutrition/calculator",
+    element: <NutritionCalculator />,
+  },
+  {
+    path: "nutrition/plans",
+    element: <NutritionPlans />,
+  },
+  {
+    path: "nutrition/recipes",
+    element: <NutritionRecipes />,
   },
 ]);
 

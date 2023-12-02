@@ -1,5 +1,4 @@
 import { create } from "zustand";
-
 interface FitnessStore {
   newTipForm: number;
   setNewTipForm: (val: number) => void;

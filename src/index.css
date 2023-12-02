@@ -3,5 +3,20 @@
 @tailwind utilities;
 
 .ant-card-body {
-    flex: 1
+  flex: 1;
+}
+
+.rotating-border {
+  animation: rotation 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite
+    alternate-reverse;
+}
+
+@keyframes rotation {
+  from {
+    transform: scale(0.9);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }

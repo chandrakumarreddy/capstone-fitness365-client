@@ -18,7 +18,7 @@ export default function Header({ headerStyle = "" }: HeaderType) {
   const fitnessItems: MenuProps["items"] = useMemo(
     () => [
       {
-        label: "Exercises",
+        label: "Fintess Exercises",
         key: "1",
         onClick: () => navigate("/fitness/exercises/aerobic"),
       },
@@ -28,7 +28,7 @@ export default function Header({ headerStyle = "" }: HeaderType) {
         onClick: () => navigate("/fitness/tips"),
       },
       {
-        label: "Blog",
+        label: "Articles and Blog",
         key: "2",
         onClick: () => navigate("/fitness/blog"),
       },
