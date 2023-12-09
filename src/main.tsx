@@ -24,6 +24,9 @@ import NutritionBlog from "./routes/nutrition/blog";
 import NutritionCalculator from "./routes/nutrition/calculator";
 import NutritionPlans from "./routes/nutrition/plans";
 import NutritionRecipes from "./routes/nutrition/recipes";
+import HireTrainer from "./routes/coach/hire";
+import TrainersList from "./routes/coach/all";
+import AiAssistant from "./routes/ai-assistant";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +35,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/apply-coach",
+    path: "/ai-assistant",
+    element: <AiAssistant />,
+  },
+  {
+    path: "/trainer",
     element: <FitnessCoach />,
+  },
+  {
+    path: "/trainers/all",
+    element: <TrainersList />,
+  },
+  {
+    path: "/trainer/hire",
+    element: <HireTrainer />,
   },
   {
     path: "dashboard",

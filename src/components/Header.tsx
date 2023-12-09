@@ -1,5 +1,6 @@
+import { QuestionCircleOutlined } from "@ant-design/icons";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Dropdown, MenuProps, Modal } from "antd";
+import { Badge, Dropdown, FloatButton, MenuProps, Modal } from "antd";
 import { useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -94,86 +95,102 @@ export default function Header({ headerStyle = "" }: HeaderType) {
     });
   };
   return (
-    <header
-      className={`bg-transparent bg-gradient-header h-16 fixed z-20 w-full ${headerStyle}`}
-    >
-      <nav className="h-full flex items-center max-w-7xl mx-auto justify-between text-base font-medium text-gray-700 tracking-wide px-4">
-        <ul className="flex items-center gap-x-10 text-white font-bold">
-          <Link to="/">
-            <li className="mr-20">
-              <img src="/logo-white.png" alt="logo" width="84" height="56" />
-            </li>
-          </Link>
-          <Dropdown
-            menu={{ items: fitnessItems }}
-            className="cursor-pointer"
-            arrow
-          >
-            <li
-              className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
-                pathname.includes("fitness") ? "text-orange-500" : ""
-              }`}
+    <>
+      <header
+        className={`bg-transparent bg-gradient-header h-16 fixed z-20 w-full ${headerStyle}`}
+      >
+        <nav className="h-full flex items-center max-w-7xl mx-auto justify-between text-base font-medium text-gray-700 tracking-wide px-4">
+          <ul className="flex items-center gap-x-10 text-white font-bold">
+            <Link to="/">
+              <li className="mr-4">
+                <img src="/logo-white.png" alt="logo" width="84" height="56" />
+              </li>
+            </Link>
+            <Dropdown
+              menu={{ items: fitnessItems }}
+              className="cursor-pointer"
+              arrow
             >
-              FITNESS
-            </li>
-          </Dropdown>
-          <Dropdown
-            menu={{ items: nutritionItems }}
-            className="cursor-pointer"
-            arrow
-          >
-            <li
-              className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
-                pathname.includes("nutrition") ? "text-orange-500" : ""
-              }`}
+              <li
+                className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
+                  pathname.includes("fitness") ? "text-orange-500" : ""
+                }`}
+              >
+                FITNESS
+              </li>
+            </Dropdown>
+            <Dropdown
+              menu={{ items: nutritionItems }}
+              className="cursor-pointer"
+              arrow
             >
-              NUTRITION
-            </li>
-          </Dropdown>
-          <li className="hover:text-orange-500">SPORTS</li>
-          <Dropdown
-            menu={{ items: yogaItems }}
-            className="cursor-pointer"
-            arrow
-          >
-            <li
-              className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
-                pathname.includes("yoga") ? "text-orange-500" : ""
-              }`}
+              <li
+                className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
+                  pathname.includes("nutrition") ? "text-orange-500" : ""
+                }`}
+              >
+                NUTRITION
+              </li>
+            </Dropdown>
+            <li className="hover:text-orange-500">SPORTS</li>
+            <Dropdown
+              menu={{ items: yogaItems }}
+              className="cursor-pointer"
+              arrow
             >
-              YOGA
-            </li>
-          </Dropdown>
-          <li className="hover:text-orange-500">CARE</li>
-        </ul>
+              <li
+                className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
+                  pathname.includes("yoga") ? "text-orange-500" : ""
+                }`}
+              >
+                YOGA
+              </li>
+            </Dropdown>
+            <li className="hover:text-orange-500">CARE</li>
+            <Link to="/ai-assistant">
+              <li className="hover:text-orange-500 relative">
+                AI Assistant{" "}
+                <Badge className="text-[8px] text-white absolute -top-2 font-bold border-2 border-orange-600 p-1 rounded-lg">
+                  new
+                </Badge>
+              </li>
+            </Link>
+          </ul>
 
-        <ul className="flex gap-x-10 text-white font-bold">
-          {data ? (
-            <>
-              <Link to="/dashboard/profile" className="hover:text-orange-500">
-                <li>Profile</li>
-              </Link>
-              <li>
-                <button
-                  onClick={onClickLogout}
-                  className="hover:text-orange-500"
-                >
-                  Logout
-                </button>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to="/login">Signin</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
-    </header>
+          <ul className="flex gap-x-10 text-white font-bold">
+            {data ? (
+              <>
+                <Link to="/dashboard/profile" className="hover:text-orange-500">
+                  <li>Profile</li>
+                </Link>
+                <li>
+                  <button
+                    onClick={onClickLogout}
+                    className="hover:text-orange-500"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Signin</Link>
+                </li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+      </header>
+      <FloatButton
+        icon={<QuestionCircleOutlined />}
+        type="primary"
+        style={{ right: 24, bottom: 24 }}
+        tooltip="AI Assitant"
+      />
+    </>
   );
 }

@@ -3,6 +3,8 @@ import { useGetProfile } from "hooks/profile";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { useMutation } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { updateSteak } from "hooks/user";
 dayjs.extend(customParseFormat);
 
 interface FieldType {
@@ -44,6 +46,9 @@ export default function Profile() {
   const onFinish = async (values: any) => {
     await mutation.mutateAsync(values);
   };
+  useEffect(() => {
+    updateSteak();
+  }, []);
   return (
     <section>
       <h3 className="text-2xl font-medium">Profile</h3>

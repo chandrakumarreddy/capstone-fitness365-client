@@ -5,7 +5,7 @@ export default function PremiumBanner() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <div className="flex border-2 border-yellow-600 p-4 rounded-lg mt-4 justify-between items-center">
+      <div className="flex border border-yellow-600 p-4 rounded-lg mt-4 justify-between items-center">
         <div>
           <h3 className="text-orange-500 font-bold text-lg">
             Get ready to transform your fitness journey with our exclusive

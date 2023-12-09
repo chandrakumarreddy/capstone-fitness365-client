@@ -7,9 +7,14 @@ export default function FitnessCoach() {
       <main className="flex h-full flex-col max-w-7xl mx-auto py-16 px-4">
         <div className="flex flex-col gap-12 flex-1 items-start my-6">
           <div className="grid gap-2 text-base">
-            <h3 className="text-4xl text-orange-500 font-bold text-center">
-              Become a Fitness Coach
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="text-4xl text-orange-500 font-bold text-center">
+                Become a Fitness Coach
+              </h3>
+              <button className="py-2 px-4 bg-blue-500 rounded-lg text-sm text-white">
+                Click here to become Trainer
+              </button>
+            </div>
             <img
               src="/coach-banner.png"
               alt="become coach"

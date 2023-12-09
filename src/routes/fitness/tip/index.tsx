@@ -124,7 +124,7 @@ export default function FitnessTip() {
                     />,
                   ]}
                 >
-                  <p className="text-md mb-4 font-medium mt-4">{item.text}</p>
+                  <p className="text-sm mb-4 font-medium mt-4">{item.text}</p>
                 </List.Item>
               )}
             />

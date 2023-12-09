@@ -72,7 +72,7 @@ export default function Exercises() {
               }}
             />
             <div className="border-2 border-blue-300 relative h-80 rounded-lg rotating-border cursor-pointer">
-              <Link to="/apply-coach">
+              <Link to="/trainer">
                 <div className="flex flex-col justify-between h-full p-4 font-normal text-base w-64 gap-4 absolute">
                   <p className="text-orange-600 font-bold">
                     Become Fintness coach
@@ -86,7 +86,20 @@ export default function Exercises() {
               </Link>
             </div>
           </div>
-          <Outlet />
+          <div className="flex flex-col gap-4">
+            <div className="border border-gray-400 rounded-lg p-4 flex items-center justify-between">
+              <h3 className="text-lg font-bold text-red-500">
+                Hire a Professional Trainer
+              </h3>
+              <Link
+                to="/trainers/all"
+                className="block px-2 py-1 rounded-lg border bg-orange-500 text-sm text-white font-bold"
+              >
+                Book now
+              </Link>
+            </div>
+            <Outlet />
+          </div>
         </div>
       </main>
     </>
