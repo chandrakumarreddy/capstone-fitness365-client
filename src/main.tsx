@@ -27,6 +27,7 @@ import NutritionRecipes from "./routes/nutrition/recipes";
 import HireTrainer from "./routes/coach/hire";
 import TrainersList from "./routes/coach/all";
 import AiAssistant from "./routes/ai-assistant";
+import Yogablog from "./routes/yoga/blog";
 
 const router = createBrowserRouter([
   {
@@ -108,13 +109,10 @@ const router = createBrowserRouter([
         path: "poses",
         element: <YogaPoses />,
       },
-      {
-        path: "tips",
-        element: <FitnessTips />,
-      },
+
       {
         path: "blog",
-        element: <FitnessBlog />,
+        element: <Yogablog />,
       },
     ],
   },
