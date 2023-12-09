@@ -190,6 +190,7 @@ export default function Header({ headerStyle = "" }: HeaderType) {
         type="primary"
         style={{ right: 24, bottom: 24 }}
         tooltip="AI Assitant"
+        onClick={() => navigate("/ai-assistant")}
       />
     </>
   );
