@@ -31,6 +31,15 @@ import CareBuy from "./routes/care/buy";
 import Yogablog from "./routes/yoga/blog";
 import AuthProvider from "hooks/auth";
 import ProtectedRoute from "components/ProtectedRoute";
+import NutritionTrainersList from "./routes/nutrition/trainers/all";
+import NutritionHireTrainer from "./routes/nutrition/trainers/hire";
+import YogaTrainersList from "./routes/yoga/trainers/all";
+import YogaHireTrainer from "./routes/yoga/trainers/hire";
+import Swimming from "./routes/sports/swimming";
+import SwimmingHire from "./routes/sports/swimming/hire";
+import Zumba from "./routes/sports/zumda";
+import BookZumbaClass from "./routes/sports/zumda/hire";
+import Squash from "./routes/sports/squash";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +97,26 @@ const router = createBrowserRouter([
       <AuthProvider>
         <ProtectedRoute>
           <HireTrainer />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "/nutrition/trainer/hire",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <NutritionHireTrainer />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "/yoga/trainer/hire",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <YogaHireTrainer />
         </ProtectedRoute>
       </AuthProvider>
     ),
@@ -204,6 +233,26 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "nutrition/trainers/all",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <NutritionTrainersList />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "yoga/trainers/all",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <YogaTrainersList />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
     path: "nutrition/calculator",
     element: (
       <AuthProvider>
@@ -229,6 +278,66 @@ const router = createBrowserRouter([
       <AuthProvider>
         <ProtectedRoute>
           <NutritionRecipes />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "sports/swimming",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <Swimming />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "sports/swimming/hire",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <SwimmingHire />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "sports/zumba",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <Zumba />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "sports/zumba/hire",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <BookZumbaClass />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "sports/squash",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <Squash />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "sports/squash/hire",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <Squash />
         </ProtectedRoute>
       </AuthProvider>
     ),

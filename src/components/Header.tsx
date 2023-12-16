@@ -16,8 +16,14 @@ export default function Header({ headerStyle = "" }: HeaderType) {
     queryKey: ["isLoggedIn"],
     queryFn: () => localStorage.getItem("isLoggedIn"),
   });
+  //
   const fitnessItems: MenuProps["items"] = useMemo(
     () => [
+      {
+        label: "Book Trainers",
+        key: "0",
+        onClick: () => navigate("/trainers/all"),
+      },
       {
         label: "Fintess Exercises",
         key: "1",
@@ -59,6 +65,11 @@ export default function Header({ headerStyle = "" }: HeaderType) {
   const yogaItems: MenuProps["items"] = useMemo(
     () => [
       {
+        label: "Book Trainers",
+        key: "0",
+        onClick: () => navigate("/yoga/trainers/all"),
+      },
+      {
         label: "Yoga Poses",
         key: "1",
         onClick: () => navigate("/yoga/poses"),
@@ -73,6 +84,11 @@ export default function Header({ headerStyle = "" }: HeaderType) {
   );
   const nutritionItems: MenuProps["items"] = useMemo(
     () => [
+      {
+        label: "Book Trainers",
+        key: "0",
+        onClick: () => navigate("/nutrition/trainers/all"),
+      },
       {
         label: "Articles and Blogs",
         key: "1",
@@ -154,13 +170,15 @@ export default function Header({ headerStyle = "" }: HeaderType) {
               className="cursor-pointer"
               arrow
             >
-              <li
-                className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
-                  pathname.includes("nutrition") ? "text-orange-500" : ""
-                }`}
-              >
-                NUTRITION
-              </li>
+              <Link to="/nutrition/trainers/all">
+                <li
+                  className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
+                    pathname.includes("nutrition") ? "text-orange-500" : ""
+                  }`}
+                >
+                  NUTRITION
+                </li>
+              </Link>
             </Dropdown>
             <Dropdown
               menu={{ items: sportsItems }}
@@ -174,20 +192,24 @@ export default function Header({ headerStyle = "" }: HeaderType) {
               className="cursor-pointer"
               arrow
             >
-              <li
-                className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
-                  pathname.includes("yoga") ? "text-orange-500" : ""
-                }`}
-              >
-                YOGA
-              </li>
+              <Link to="/yoga/trainers/all">
+                <li
+                  className={`hover:text-orange-500 transition-colors delay-100 py-4 ${
+                    pathname.includes("yoga") ? "text-orange-500" : ""
+                  }`}
+                >
+                  YOGA
+                </li>
+              </Link>
             </Dropdown>
             <Dropdown
               menu={{ items: careItems }}
               className="cursor-pointer"
               arrow
             >
-              <li className="hover:text-orange-500">CARE</li>
+              <Link to="/care/buy">
+                <li className="hover:text-orange-500">CARE</li>
+              </Link>
             </Dropdown>
             <Link to="/ai-assistant">
               <li className="hover:text-orange-500 relative">

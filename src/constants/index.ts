@@ -66,3 +66,63 @@ export const trainers = [
     },
   },
 ];
+
+export const nutritionTrainers = [
+  {
+    id: "19001",
+    name: "Nidhi Mohan Kamal",
+    image: "https://pbs.twimg.com/media/DxMOp0-WoAAagQQ?format=jpg&name=large",
+    chargePerHour: 50,
+    trainingExperience: {
+      fitness: 5,
+      yoga: 3,
+    },
+  },
+  {
+    id: "19002",
+    name: "Rujuta Diwekar",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGrct8-2zUGV1SVOrTayyjQNC7VahEcasZyA&usqp=CAU",
+    chargePerHour: 60,
+    trainingExperience: {
+      fitness: 4,
+      yoga: 2,
+    },
+  },
+];
+
+export const yogaTrainers = [
+  {
+    id: "20001",
+    name: "Baba Ramdev",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-uZme7ohsYNSvzCvoLHjUciBRXHXlykTTB4I8LaxXHg&s",
+    chargePerHour: 50,
+    trainingExperience: {
+      fitness: 5,
+      yoga: 3,
+    },
+  },
+  {
+    id: "20002",
+    name: "R. Sharath Jois",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIwqfEdblw52tN8XSmC4ydgzuYT5KiByTFtw&usqp=CAU",
+    chargePerHour: 60,
+    trainingExperience: {
+      fitness: 4,
+      yoga: 2,
+    },
+  },
+  {
+    id: "20003",
+    name: "Sri Sri Ravi Shanker",
+    image:
+      "https://images.newindianexpress.com/uploads/user/ckeditor_images/article/2018/1/26/PREJUDICEISTHE.jpg?w=376&dpr=2.6",
+    chargePerHour: 60,
+    trainingExperience: {
+      fitness: 4,
+      yoga: 2,
+    },
+  },
+];
