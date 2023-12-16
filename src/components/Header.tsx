@@ -213,7 +213,7 @@ export default function Header({ headerStyle = "" }: HeaderType) {
             </Dropdown>
             <Link to="/ai-assistant">
               <li className="hover:text-orange-500 relative">
-                AI Assistant{" "}
+                Gymson{" "}
                 <Badge className="text-[8px] text-white absolute -top-2 font-bold border-2 border-orange-600 p-1 rounded-lg">
                   new
                 </Badge>
