@@ -50,7 +50,7 @@ export default function AiAssistant() {
             <div className="flex flex-col">
               <div className="flex-1">
                 <h3 className="text-2xl font-medium text-blue-500 text-center">
-                  Chat with Assistant
+                  Chat with Gymson
                 </h3>
                 <div
                   className="mt-4 flex flex-col gap-6 pb-[100px] h-[500px] max-h-[500px] overflow-scroll"
