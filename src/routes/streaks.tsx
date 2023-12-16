@@ -39,7 +39,7 @@ function Streaks() {
       </div>
       <div className="grid gap-6">
         <h3 className="text-2xl font-bold">Streak History</h3>
-        <div>
+        <div className="grid gap-4">
           {data?.result.streak_history.map((item) => (
             <div
               key={item.date}
