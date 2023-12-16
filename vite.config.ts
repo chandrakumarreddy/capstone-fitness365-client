@@ -10,6 +10,23 @@ export default defineConfig((configEnv) => {
     server: {
       port: 8000,
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            //@ts-ignore
+            if (id.includes("node_modules/")) {
+              return id
+                .toString()
+                .split("node_modules/")[1]
+                .split("/")[0]
+                .toString();
+            }
+            return "app";
+          },
+        },
+      },
+    },
     test: {
       globals: true,
       environment: "happy-dom",
