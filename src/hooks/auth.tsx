@@ -8,8 +8,12 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "./useLocalStorage";
-import { User } from "../types/user";
+
 import { Spin } from "antd";
+
+type User = {
+  token: string;
+};
 
 const AuthContext = createContext<{
   user: User | null;
