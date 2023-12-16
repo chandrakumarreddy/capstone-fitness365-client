@@ -30,8 +30,28 @@ export default function Header({ headerStyle = "" }: HeaderType) {
       },
       {
         label: "Articles and Blog",
-        key: "2",
+        key: "3",
         onClick: () => navigate("/fitness/blog"),
+      },
+    ],
+    []
+  );
+  const sportsItems: MenuProps["items"] = useMemo(
+    () => [
+      {
+        label: "Swimming",
+        key: "1",
+        onClick: () => navigate("/sports/swimming"),
+      },
+      {
+        label: "Zumba coaching",
+        key: "2",
+        onClick: () => navigate("/sports/zumba"),
+      },
+      {
+        label: "Squash",
+        key: "3",
+        onClick: () => navigate("/sports/squash"),
       },
     ],
     []
@@ -72,6 +92,16 @@ export default function Header({ headerStyle = "" }: HeaderType) {
         label: "Calorie and Macronutrient Calculator",
         key: "4",
         onClick: () => navigate("/nutrition/calculator"),
+      },
+    ],
+    []
+  );
+  const careItems: MenuProps["items"] = useMemo(
+    () => [
+      {
+        label: "Buy",
+        key: "1",
+        onClick: () => navigate("/care/buy"),
       },
     ],
     []
@@ -132,7 +162,13 @@ export default function Header({ headerStyle = "" }: HeaderType) {
                 NUTRITION
               </li>
             </Dropdown>
-            <li className="hover:text-orange-500">SPORTS</li>
+            <Dropdown
+              menu={{ items: sportsItems }}
+              className="cursor-pointer"
+              arrow
+            >
+              <li className="hover:text-orange-500">SPORTS</li>
+            </Dropdown>
             <Dropdown
               menu={{ items: yogaItems }}
               className="cursor-pointer"
@@ -146,7 +182,13 @@ export default function Header({ headerStyle = "" }: HeaderType) {
                 YOGA
               </li>
             </Dropdown>
-            <li className="hover:text-orange-500">CARE</li>
+            <Dropdown
+              menu={{ items: careItems }}
+              className="cursor-pointer"
+              arrow
+            >
+              <li className="hover:text-orange-500">CARE</li>
+            </Dropdown>
             <Link to="/ai-assistant">
               <li className="hover:text-orange-500 relative">
                 AI Assistant{" "}

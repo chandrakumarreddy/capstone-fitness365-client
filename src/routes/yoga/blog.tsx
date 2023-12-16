@@ -2,8 +2,6 @@ import { Card } from "antd";
 import Header from "components/Header";
 import { YOGA_ARTICLES } from "../../constants/blogs";
 
-console.log(YOGA_ARTICLES);
-
 export default function Yogablog() {
   return (
     <>

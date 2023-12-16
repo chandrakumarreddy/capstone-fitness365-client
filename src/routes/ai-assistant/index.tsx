@@ -3,7 +3,6 @@ import Header from "components/Header";
 import { FormEvent, useLayoutEffect, useRef, useState } from "react";
 
 function scrollToBottom(el: HTMLElement) {
-  console.log(el.scrollHeight);
   el.scrollTop = el.scrollHeight;
 }
 

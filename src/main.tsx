@@ -27,33 +27,80 @@ import NutritionRecipes from "./routes/nutrition/recipes";
 import HireTrainer from "./routes/coach/hire";
 import TrainersList from "./routes/coach/all";
 import AiAssistant from "./routes/ai-assistant";
+import CareBuy from "./routes/care/buy";
 import Yogablog from "./routes/yoga/blog";
+import AuthProvider from "hooks/auth";
+import ProtectedRoute from "components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: (
+      <AuthProvider>
+        <HomePage />
+      </AuthProvider>
+    ),
     errorElement: <ErrorPage />,
   },
   {
     path: "/ai-assistant",
-    element: <AiAssistant />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <AiAssistant />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+  {
+    path: "/care/buy",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <CareBuy />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
   {
     path: "/trainer",
-    element: <FitnessCoach />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <FitnessCoach />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
   {
     path: "/trainers/all",
-    element: <TrainersList />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <TrainersList />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
   {
     path: "/trainer/hire",
-    element: <HireTrainer />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <HireTrainer />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
     children: [
       {
         path: "profile",
@@ -71,15 +118,29 @@ const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: <LoginPage />,
+    element: (
+      <AuthProvider>
+        <LoginPage />
+      </AuthProvider>
+    ),
   },
   {
     path: "register",
-    element: <RegisterPage />,
+    element: (
+      <AuthProvider>
+        <RegisterPage />
+      </AuthProvider>
+    ),
   },
   {
     path: "fitness",
-    element: <FitnessPage />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <FitnessPage />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
     children: [
       {
         path: "exercises",
@@ -103,7 +164,13 @@ const router = createBrowserRouter([
   },
   {
     path: "yoga",
-    element: <Yoga />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <Yoga />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
     children: [
       {
         path: "poses",
@@ -118,23 +185,53 @@ const router = createBrowserRouter([
   },
   {
     path: "fitness/:id",
-    element: <FitnessPostPage />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <FitnessPostPage />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
   {
     path: "nutrition/blog",
-    element: <NutritionBlog />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <NutritionBlog />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
   {
     path: "nutrition/calculator",
-    element: <NutritionCalculator />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <NutritionCalculator />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
   {
     path: "nutrition/plans",
-    element: <NutritionPlans />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <NutritionPlans />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
   {
     path: "nutrition/recipes",
-    element: <NutritionRecipes />,
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <NutritionRecipes />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
   },
 ]);
 
