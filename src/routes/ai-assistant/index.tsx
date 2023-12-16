@@ -44,7 +44,7 @@ export default function AiAssistant() {
   return (
     <>
       <Header headerStyle="!bg-black" />
-      <main className="flex flex-col max-w-7xl mx-auto pt-16 px-4 h-screen overflow-hidden">
+      <main className="flex flex-col max-w-7xl mx-auto pt-16 px-4 h-screen overflow-scroll">
         <div className="flex gap-12 flex-1 items-start my-6 h-full">
           <div className="w-full h-full">
             <div className="flex flex-col">
@@ -53,7 +53,7 @@ export default function AiAssistant() {
                   Chat with Assistant
                 </h3>
                 <div
-                  className="mt-4 flex flex-col gap-6 pb-[100px] h-[500px]"
+                  className="mt-4 flex flex-col gap-6 pb-[100px] h-[500px] max-h-[500px] overflow-scroll"
                   ref={assistantRef}
                 >
                   {history.map((message) => (
